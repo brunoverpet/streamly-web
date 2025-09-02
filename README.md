@@ -1,33 +1,33 @@
-🎨 # Streamly Web
+# 🎬 Streamly Web
 
 Backend de Streamly (https://github.com/brunoverpet/streamly), une application pour suivre les films et séries que tu as déjà vus et découvrir de nouvelles recommandations.
 
-📝 #Description
+# 📝 Description
 
 Ce projet est l’interface web de Streamly.
 Il permet de :
 
-Consulter les recommandations de films et séries basées sur ton historique.
+- Consulter les recommandations de films et séries basées sur ton historique.
 
-Marquer les films et séries comme vus.
+- Marquer les films et séries comme vus.
 
-Parcourir ton historique pour voir ce que tu as déjà regardé.
+- Parcourir ton historique pour voir ce que tu as déjà regardé.
 
-Gérer ta liste de films/séries à voir.
+- Gérer ta liste de films/séries à voir.
 
-🛠️ Tech Stack
+# 🛠️ Tech Stack
 
-Framework : Next.js (App Router)
+- **Framework** : Next.js (App Router)
 
-Styling : Tailwind CSS
+- **Styling** : Tailwind CSS
 
-Animations : Framer Motion
+- **Animations** : Framer Motion
 
-Langage : TypeScript
+- **Langage** : TypeScript
 
-Lint & Format : ESLint + Prettier
+- **Lint & Format** : ESLint + Prettier
 
-🔗 Dépendances
+# 🔗 Dépendances
 
 Ce projet consomme l’API du backend Streamly :
 ➡️ https://github.com/brunoverpet/streamly
