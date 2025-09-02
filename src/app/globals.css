@@ -3,7 +3,7 @@
 @theme {
     --color-background: #16161A;      /* pour les fonds */
     --color-background-2: #242629;            /* pour les fonds secondaires */
-    --color-card-tag-: #7F5AF0;     /* pour les fonds des tags */
+    --color-card-tag: #7F5AF0;     /* pour les fonds des tags */
     --color-title: #FFFFFE;           /* pour le texte des titres */
     --color-paragraph: #94A1B2;       /* pour le texte des paragraphes */
     --color-tertiary: #2CB67D;
