@@ -12,14 +12,14 @@ export default function Navbar() {
       <div className="flex gap-4">
         <Link href="/historique">
           <button
-            className={`pb-1 ${active === 'historique' ? 'text-title border-b-2 border-white' : 'border-b-2 border-transparent'}`}
+            className={`pb-1 ${active === 'historique' ? 'text-title border-b-2 border-white' : 'text-paragraph border-b-2 border-transparent'}`}
           >
             Historique
           </button>
         </Link>
         <Link href="/">
           <button
-            className={`pb-1 ${active === '/' ? 'text-title border-b-2 border-white' : 'border-b-2 border-transparent'}`}
+            className={`pb-1 ${active === '/' ? 'text-title border-b-2 border-white' : 'text-paragraph border-b-2 border-transparent'}`}
           >
             Explorer
           </button>
