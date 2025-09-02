@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Kalam, Poppins } from 'next/font/google'
 import './globals.css'
+import Header from '@/app/components/Header'
 
 const poppins = Poppins({
   variable: '--font-poppins',
@@ -27,7 +28,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr">
-      <body className={`${kalam.variable} ${poppins.className} antialiased`}>{children}</body>
+      <body className={`${kalam.variable} ${poppins.className} antialiased mt-10 mx-5`}>
+        <Header />
+        <main>{children}</main>
+      </body>
     </html>
   )
 }
