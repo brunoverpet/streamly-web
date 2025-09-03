@@ -15,7 +15,10 @@ interface NavbarProps {
   }
 }
 
-export default function Navbar({ page1Info = {name: "Historique", url : "historique"}, page2Info = {name: "Explorer", url : "/"}}: NavbarProps) {
+export default function Navbar({
+  page1Info = { name: 'Historique', url: 'historique' },
+  page2Info = { name: 'Explorer', url: '/' },
+}: NavbarProps) {
   const pathname = usePathname()
 
   return (
@@ -53,6 +56,5 @@ export default function Navbar({ page1Info = {name: "Historique", url : "histori
       {/* Espace de droite pour équilibrer */}
       <div className="w-[24px]" />
     </div>
-
   )
 }
