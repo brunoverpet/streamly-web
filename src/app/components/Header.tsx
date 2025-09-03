@@ -1,7 +1,7 @@
 export default function Header() {
   return (
     <div className="flex justify-end">
-      <div className="text-title text-5xl font-test">Streamly</div>
+      <h1 className="text-title text-5xl font-test">Streamly</h1>
     </div>
   )
 }
