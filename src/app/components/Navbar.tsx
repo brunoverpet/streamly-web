@@ -4,38 +4,48 @@ import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import { Search } from 'lucide-react'
 
-export default function Navbar() {
+interface NavbarProps {
+  page1Info?: {
+    name: string
+    url: string
+  }
+  page2Info?: {
+    name: string
+    url: string
+  }
+}
+
+export default function Navbar({ page1Info = {name: "Historique", url : "historique"}, page2Info = {name: "Explorer", url : "/"}}: NavbarProps) {
   const pathname = usePathname()
-  const active = pathname.startsWith('/historique') ? 'historique' : '/'
 
   return (
     <div className="flex items-center justify-between w-full">
       <div className="flex items-center justify-center w-[24px]">
-        {active === 'historique' && <Search color="white" />}
+        {pathname === 'historique' && <Search color="white" />}
       </div>
 
       <div className="flex gap-4 justify-center flex-1">
-        <Link href="/historique">
+        <Link href={page1Info.url}>
           <button
             className={`pb-1 ${
-              active === 'historique'
+              pathname === '/historique' || pathname === '/register'
                 ? 'text-title border-b-2 border-white'
                 : 'text-paragraph border-b-2 border-transparent'
             }`}
           >
-            Historique
+            {page1Info.name}
           </button>
         </Link>
 
-        <Link href="/">
+        <Link href={page2Info.url}>
           <button
             className={`pb-1 ${
-              active === '/'
+              pathname === '/' || pathname === '/login'
                 ? 'text-title border-b-2 border-white'
                 : 'text-paragraph border-b-2 border-transparent'
             }`}
           >
-            Explorer
+            {page2Info.name}
           </button>
         </Link>
       </div>
