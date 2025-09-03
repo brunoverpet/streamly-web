@@ -1,10 +1,20 @@
+'use client'
+
+import { toast } from 'sonner'
+import { ArrowDown } from 'lucide-react'
+
 interface ButtonProps {
   name: string
 }
-export default function Button ({name}: ButtonProps) {
+export default function Button({ name }: ButtonProps) {
   return (
-    <div className="bg-card-tag p-3 rounded-lg text-title flex items-center w-max">
+    <button
+      onClick={() => {
+        toast('This is a toast', { icon: <ArrowDown /> })
+      }}
+      className="bg-card-tag p-3 rounded-lg text-title flex items-center w-max"
+    >
       {name}
-    </div>
+    </button>
   )
 }

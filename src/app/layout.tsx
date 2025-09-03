@@ -33,7 +33,12 @@ export default function RootLayout({
         <Header />
         <main>
           {children}
-          <Toaster />
+          <Toaster
+            position="top-right"
+            closeButton={true}
+            duration={1500}
+            theme="light"
+          />
         </main>
       </body>
     </html>
