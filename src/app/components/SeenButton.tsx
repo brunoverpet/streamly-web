@@ -12,8 +12,6 @@ export default function SeenButton() {
     toast('Seen button clicked')
   }
   return (
-    <div onClick={handleSeenButton}>
-      {seen ? <Eye color="white" /> : <EyeOff color="white" />}
-    </div>
+    <div onClick={handleSeenButton}>{seen ? <Eye color="white" /> : <EyeOff color="white" />}</div>
   )
 }
