@@ -3,6 +3,7 @@ import { Kalam, Poppins } from 'next/font/google'
 import './globals.css'
 import Header from '@/app/components/Header'
 import { Toaster } from 'sonner'
+import PageTransition from '@/app/components/PageTransition'
 
 const poppins = Poppins({
   variable: '--font-poppins',
@@ -31,10 +32,8 @@ export default function RootLayout({
     <html lang="fr">
       <body className={`${kalam.variable} ${poppins.className} antialiased mt-10 mx-5`}>
         <Header />
-        <main>
-          {children}
-          <Toaster position="top-right" closeButton={true} duration={1500} theme="light" />
-        </main>
+        <PageTransition>{children}</PageTransition>
+        <Toaster position="top-right" closeButton={true} duration={1500} theme="light" />
       </body>
     </html>
   )
