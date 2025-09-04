@@ -1,0 +1,37 @@
+[
+  {
+    "id": "1",
+    "src": "/superman_cover.jpg",
+    "title": "Superman",
+    "date": "Août 2025",
+    "tags": ["Science-Fiction", "Action", "Comédie"]
+  },
+  {
+    "id": "2",
+    "src": "",
+    "title": "The Batman",
+    "date": "Septembre 2022",
+    "tags": ["Action", "Thriller", "Mystère"]
+  },
+  {
+    "id": "3",
+    "src": "",
+    "title": "Dune: Part Two",
+    "date": "Janvier  2024",
+    "tags": ["Science-Fiction", "Aventure", "Drame"]
+  },
+  {
+    "id": "4",
+    "src": "",
+    "title": "Spider-Man: No Way Home",
+    "date": "Mai 2021",
+    "tags": ["Action", "Super-Héros", "Multivers"]
+  },
+  {
+    "id": "5",
+    "src": "",
+    "title": "Oppenheimer",
+    "date": " Décembre 2023",
+    "tags": ["Biopic", "Historique", "Drame"]
+  }
+]

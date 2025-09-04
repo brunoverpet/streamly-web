@@ -5,6 +5,8 @@ import Navbar from '@/app/components/Navbar'
 import { useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import { motion } from 'motion/react'
+import items from './../../items.json'
+import { ItemCardProps } from '@/app/type/ItemCard'
 
 export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -27,9 +29,17 @@ export default function Home() {
         <div className="mt-16 flex items-center justify-center">
           <Navbar />
         </div>
-        <div className="mt-14 flex gap-2">
-          <ItemCard />
-          <ItemCard />
+        <div className="mt-14 flex gap-2 flex-wrap">
+          {items.map((item: ItemCardProps) => (
+            <ItemCard
+              key={item.id}
+              title={item.title}
+              date={item.date}
+              id={item.id}
+              src={item.src}
+              tags={item.tags}
+            />
+          ))}
         </div>
       </motion.div>
     </div>
