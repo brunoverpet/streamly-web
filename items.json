@@ -4,34 +4,69 @@
     "src": "/superman_cover.jpg",
     "title": "Superman",
     "date": "Août 2025",
-    "tags": ["Science-Fiction", "Action", "Comédie"]
+    "tags": ["Science-Fiction", "Action", "Comédie"],
+    "synopsis": "Un extraterrestre doté de super-pouvoirs protège la Terre contre toutes sortes de menaces tout en cherchant sa place parmi les humains.",
+    "duration": "2:10:00",
+    "actors": [
+      { "name": "Henry Cavill", "src": "" },
+      { "name": "Amy Adams", "src": "" },
+      { "name": "Michael Shannon", "src": "" }
+    ]
   },
   {
     "id": "2",
     "src": "",
     "title": "The Batman",
     "date": "Septembre 2022",
-    "tags": ["Action", "Thriller", "Mystère"]
+    "tags": ["Action", "Thriller", "Mystère"],
+    "synopsis": "Bruce Wayne lutte contre le crime à Gotham City en enquêtant sur une série de meurtres mystérieux liés à la corruption de la ville.",
+    "duration": "2:55:00",
+    "actors": [
+      { "name": "Robert Pattinson", "src": "" },
+      { "name": "Zoë Kravitz", "src": "" },
+      { "name": "Jeffrey Wright", "src": "" }
+    ]
   },
   {
     "id": "3",
     "src": "",
     "title": "Dune: Part Two",
-    "date": "Janvier  2024",
-    "tags": ["Science-Fiction", "Aventure", "Drame"]
+    "date": "Janvier 2024",
+    "tags": ["Science-Fiction", "Aventure", "Drame"],
+    "synopsis": "La suite épique de Dune, où Paul Atréides poursuit son destin et affronte les forces qui contrôlent l’univers connu.",
+    "duration": "3:00:00",
+    "actors": [
+      { "name": "Timothée Chalamet", "src": "" },
+      { "name": "Zendaya", "src": "" },
+      { "name": "Rebecca Ferguson", "src": "" }
+    ]
   },
   {
     "id": "4",
     "src": "",
     "title": "Spider-Man: No Way Home",
     "date": "Mai 2021",
-    "tags": ["Action", "Super-Héros", "Multivers"]
+    "tags": ["Action", "Super-Héros", "Multivers"],
+    "synopsis": "Peter Parker fait face aux conséquences de sa double vie révélée et doit affronter des ennemis venus d’autres univers.",
+    "duration": "2:28:00",
+    "actors": [
+      { "name": "Tom Holland", "src": "" },
+      { "name": "Zendaya", "src": "" },
+      { "name": "Benedict Cumberbatch", "src": "" }
+    ]
   },
   {
     "id": "5",
     "src": "",
     "title": "Oppenheimer",
-    "date": " Décembre 2023",
-    "tags": ["Biopic", "Historique", "Drame"]
+    "date": "Décembre 2023",
+    "tags": ["Biopic", "Historique", "Drame"],
+    "synopsis": "L’histoire de J. Robert Oppenheimer et du projet Manhattan, explorant les dilemmes moraux et scientifiques de la création de la bombe atomique.",
+    "duration": "3:15:00",
+    "actors": [
+      { "name": "Cillian Murphy", "src": "" },
+      { "name": "Emily Blunt", "src": "" },
+      { "name": "Matt Damon", "src": "" }
+    ]
   }
 ]

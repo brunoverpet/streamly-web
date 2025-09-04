@@ -19,7 +19,7 @@ export default function ItemCard({
     <div>
       <div className="w-40 h-80 bg-tertiary rounded-xl flex items-end relative">
         <Link href={`/media/${id}`}>
-          <Image src={image} layout="fill" className="rounded-xl object-cover" />
+          <Image src={image} layout="fill" className="rounded-xl object-cover" unoptimized />
           <div
             className="absolute right-3 top-3 rounded-full w-max p-1 bg-tertiary"
             onClick={(e) => e.preventDefault()}
