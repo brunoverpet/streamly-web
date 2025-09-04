@@ -11,7 +11,7 @@ export default function Home() {
   const router = useRouter()
 
   const handleDragEnd = (_event: any, info: any) => {
-    if (info.offset.x > 50) {
+    if (info.offset.x > 10) {
       router.push('/historique')
     }
   }
@@ -23,7 +23,6 @@ export default function Home() {
         dragConstraints={containerRef} // utilise le container comme limite
         dragMomentum={false}
         onDragEnd={handleDragEnd}
-        transition={{ type: 'tween', stiffness: 300, damping: 30 }}
       >
         <div className="mt-16 flex items-center justify-center">
           <Navbar />

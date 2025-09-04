@@ -13,7 +13,7 @@ export default function Historique() {
   const router = useRouter()
 
   const handleDragEnd = (_event: any, info: any) => {
-    if (info.offset.x < -50) {
+    if (info.offset.x < -10) {
       router.push('/')
     }
   }
@@ -26,7 +26,6 @@ export default function Historique() {
         dragMomentum={false}
         onDragEnd={handleDragEnd}
         dragDirectionLock={true}
-        transition={{ type: 'tween', stiffness: 300, damping: 30 }}
       >
         <div className="">
           {!searchActive && (
