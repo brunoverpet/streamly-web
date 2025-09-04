@@ -4,6 +4,7 @@ import './globals.css'
 import Header from '@/app/components/Header'
 import { Toaster } from 'sonner'
 import PageTransition from '@/app/components/PageTransition'
+import type React from 'react'
 
 const poppins = Poppins({
   variable: '--font-poppins',
