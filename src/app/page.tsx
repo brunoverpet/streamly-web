@@ -18,36 +18,61 @@ export default function Home() {
     }
   }
 
-  const [items, setItems] = useState<any[]>([])
+  const [items, setItems] = useState<ItemCardProps[]>([])
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
+    setLoading(true)
     getRecommandations()
-      .then(setItems)
+      .then((data) => setItems(data))
       .catch((err) => console.error(err))
+      .finally(() => setLoading(false))
   }, [])
 
   return (
     <div ref={containerRef}>
       <motion.div
         drag="x"
-        dragConstraints={containerRef} // utilise le container comme limite
+        dragConstraints={containerRef}
         dragMomentum={false}
         onDragEnd={handleDragEnd}
       >
         <div className="mt-16 flex items-center justify-center">
           <Navbar />
         </div>
-        <div className="mt-14 flex gap-2 flex-wrap">
-          {items.map((item: ItemCardProps) => (
-            <ItemCard
-              key={item.id}
-              id={item.id}
-              title={item.title}
-              release_date={item.release_date}
-              backdrop_path={item.backdrop_path}
-              genres={item.genres}
-            />
-          ))}
+
+        <div className="mt-14 flex gap-2 flex-wrap justify-center">
+          {loading ? (
+            // 🟢 Skeleton Loader
+            [...Array(6)].map((_, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: i * 0.1 }}
+                className="w-40 h-80 rounded-xl bg-gray-700 animate-pulse"
+              />
+            ))
+          ) : items.length > 0 ? (
+            items.map((item) => (
+              <ItemCard
+                key={item.id}
+                id={item.id}
+                title={item.title}
+                release_date={item.release_date}
+                backdrop_path={item.backdrop_path}
+                genres={item.genres}
+              />
+            ))
+          ) : (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="text-white opacity-60 text-center"
+            >
+              Aucun film recommandé 😢
+            </motion.div>
+          )}
         </div>
       </motion.div>
     </div>
