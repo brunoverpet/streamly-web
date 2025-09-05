@@ -5,6 +5,7 @@ export interface ItemCardProps {
   title: string
   release_date: string
   genres: string[]
+  isSeen?: boolean
 }
 
 export interface ItemCardPropsFromApi {

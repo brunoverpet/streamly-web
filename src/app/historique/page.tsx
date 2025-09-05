@@ -27,7 +27,6 @@ export default function Historique() {
       .catch((err) => console.error(err))
   }, [])
 
-
   return (
     <div ref={containerRef} className="mt-14">
       <motion.div
@@ -53,6 +52,7 @@ export default function Historique() {
                   release_date={item.releaseDate}
                   backdrop_path={item.backdropPath}
                   genres={item.genres}
+                  isSeen={true}
                 />
               ))
             ) : (

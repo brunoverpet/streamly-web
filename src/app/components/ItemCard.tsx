@@ -13,6 +13,7 @@ export default function ItemCard({
   backdrop_path,
   genres = [],
   withInfo = false,
+  isSeen = false,
 }: ItemCardProps) {
   const backdropUrl = `https://image.tmdb.org/t/p/original${backdrop_path}`
   const image = backdropUrl || '/clean-web-fallback.jpg'
@@ -26,7 +27,7 @@ export default function ItemCard({
             className="absolute right-3 top-3 rounded-full w-max p-1 bg-tertiary"
             onClick={(e) => e.preventDefault()}
           >
-            <SeenButton />
+            <SeenButton itemId={id} initialSeen={isSeen} />
           </div>
 
           {!withInfo && (
