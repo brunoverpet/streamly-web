@@ -42,7 +42,7 @@ export default function Historique() {
               <Navbar />
             </div>
           )}
-          <div className="mt-14 flex gap-2">
+          <div className="mt-14 flex flex-wrap gap-2">
             {items.length > 0 ? (
               items.map((item: ItemCardPropsFromApi) => (
                 <ItemCard
