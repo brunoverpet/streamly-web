@@ -26,17 +26,6 @@ export default function Home() {
       .catch((err) => console.error(err))
   }, [])
 
-  // items.map((item) => {
-  //   console.log(item)
-  // })
-
-  // items.forEach((item) => {
-  //   console.log('Comparaisons :')
-  //   item.bestComparisons.forEach((i) => {
-  //     console.log(i)
-  //   })
-  // })
-
   return (
     <div ref={containerRef}>
       <motion.div
