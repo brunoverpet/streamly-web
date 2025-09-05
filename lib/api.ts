@@ -21,6 +21,16 @@ export async function getRecommandations() {
   }
 }
 
+export async function getHistoric() {
+  try {
+    return await fetchUtilities('/watched', 'get')
+  } catch (err: any) {
+    const error: any = new Error("Une erreur s'est produite.")
+    error.status = err.status || 400
+    throw error
+  }
+}
+
 export async function fetchUtilities(endpoint: string, method: string, body?: {}) {
   const res = await fetch(url + endpoint, {
     method: method,

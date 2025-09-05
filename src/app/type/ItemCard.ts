@@ -7,6 +7,15 @@ export interface ItemCardProps {
   genres: string[]
 }
 
+export interface ItemCardPropsFromApi {
+  withInfo?: boolean
+  id: string
+  backdropPath: string
+  title: string
+  releaseDate: string
+  genres: string[]
+}
+
 export interface Actor {
   name: string
   src: string

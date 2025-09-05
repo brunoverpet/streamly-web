@@ -38,7 +38,7 @@ export default function Home() {
           <Navbar />
         </div>
         <div className="mt-14 flex gap-2 flex-wrap">
-          {items.map((item: ItemCardProps, index: number) => (
+          {items.map((item: ItemCardProps) => (
             <ItemCard
               key={item.id}
               id={item.id}
