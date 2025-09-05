@@ -10,6 +10,8 @@ import { ItemCardPropsFromApi } from '@/app/type/ItemCard'
 
 export default function Historique() {
   const [searchActive, setSearchActive] = useState(false)
+  const [items, setItems] = useState<any[]>([])
+  const [loading, setLoading] = useState(true) // 👈 Ajout du loader
 
   const containerRef = useRef<HTMLDivElement>(null)
   const router = useRouter()
@@ -19,48 +21,62 @@ export default function Historique() {
       router.push('/')
     }
   }
-  const [items, setItems] = useState<any[]>([])
 
   useEffect(() => {
     getHistoric()
-      .then(setItems)
+      .then((res) => setItems(res))
       .catch((err) => console.error(err))
+      .finally(() => setLoading(false)) // 👈 Stopper le loader quand les données arrivent
   }, [])
 
   return (
     <div ref={containerRef} className="mt-14">
       <motion.div
         drag="x"
-        dragConstraints={containerRef} // utilise le container comme limite
+        dragConstraints={containerRef}
         dragMomentum={false}
         onDragEnd={handleDragEnd}
         dragDirectionLock={true}
       >
-        <div className="">
-          {!searchActive && (
-            <div className="mt-16 flex items-center justify-center">
-              <Navbar />
-            </div>
-          )}
-          <div className="mt-14 flex flex-wrap gap-2">
-            {items.length > 0 ? (
-              items.map((item: ItemCardPropsFromApi) => (
-                <ItemCard
-                  key={item.id}
-                  id={item.id}
-                  title={item.title}
-                  release_date={item.releaseDate}
-                  backdrop_path={item.backdropPath}
-                  genres={item.genres}
-                  isSeen={true}
-                />
-              ))
-            ) : (
-              <h1 className="text-orange-300 font-medium text-xl">
-                Vous n'avez pas encore ajouté de films vu.
-              </h1>
-            )}
+        {!searchActive && (
+          <div className="mt-16 flex items-center justify-center">
+            <Navbar />
           </div>
+        )}
+
+        <div className="mt-14 flex flex-wrap gap-2 justify-center">
+          {loading ? (
+            // 🟢 Skeleton loader identique à la Home
+            [...Array(6)].map((_, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: i * 0.1 }}
+                className="w-40 h-80 rounded-xl bg-gray-700 animate-pulse"
+              />
+            ))
+          ) : items.length > 0 ? (
+            items.map((item: ItemCardPropsFromApi) => (
+              <ItemCard
+                key={item.id}
+                id={item.id}
+                title={item.title}
+                release_date={item.releaseDate}
+                backdrop_path={item.backdropPath}
+                genres={item.genres}
+                isSeen={true}
+              />
+            ))
+          ) : (
+            <motion.h1
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="text-orange-300 font-medium text-xl text-center"
+            >
+              Vous n'avez pas encore ajouté de films vus.
+            </motion.h1>
+          )}
         </div>
       </motion.div>
     </div>
