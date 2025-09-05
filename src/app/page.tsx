@@ -2,11 +2,11 @@
 
 import ItemCard from '@/app/components/ItemCard'
 import Navbar from '@/app/components/Navbar'
-import { useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { motion } from 'motion/react'
-import items from './../../items.json'
 import { ItemCardProps } from '@/app/type/ItemCard'
+import { getRecommandations } from '../../lib/api'
 
 export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -17,6 +17,25 @@ export default function Home() {
       router.push('/historique')
     }
   }
+
+  const [items, setItems] = useState<any[]>([])
+
+  useEffect(() => {
+    getRecommandations()
+      .then(setItems)
+      .catch((err) => console.error(err))
+  }, [])
+
+  // items.map((item) => {
+  //   console.log(item)
+  // })
+
+  // items.forEach((item) => {
+  //   console.log('Comparaisons :')
+  //   item.bestComparisons.forEach((i) => {
+  //     console.log(i)
+  //   })
+  // })
 
   return (
     <div ref={containerRef}>
@@ -30,14 +49,14 @@ export default function Home() {
           <Navbar />
         </div>
         <div className="mt-14 flex gap-2 flex-wrap">
-          {items.map((item: ItemCardProps) => (
+          {items.map((item: ItemCardProps, index: number) => (
             <ItemCard
               key={item.id}
-              title={item.title}
-              date={item.date}
               id={item.id}
-              src={item.src}
-              tags={item.tags}
+              title={item.title}
+              release_date={item.release_date}
+              backdrop_path={item.backdrop_path}
+              genres={item.genres}
             />
           ))}
         </div>

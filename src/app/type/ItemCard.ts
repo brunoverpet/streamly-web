@@ -1,10 +1,10 @@
 export interface ItemCardProps {
   withInfo?: boolean
   id: string
-  src: string
+  backdrop_path: string
   title: string
-  date: string
-  tags: string[]
+  release_date: string
+  genres: string[]
 }
 
 export interface Actor {

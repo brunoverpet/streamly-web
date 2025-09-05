@@ -2,6 +2,7 @@ const url = 'http://localhost:3333'
 
 export async function login(email: string, password: string) {
   try {
+    console.log(email, password)
     return await fetchUtilities('/login', 'POST', { email, password })
   } catch (err: any) {
     const error: any = new Error("L'email ou le mot de passe est incorrect.")
@@ -11,8 +12,12 @@ export async function login(email: string, password: string) {
 }
 
 export async function getRecommandations() {
-  const response = await fetchUtilities('/recommandations', 'get')
-  if (!response.ok) {
+  try {
+    return await fetchUtilities('/recommendations', 'get')
+  } catch (err: any) {
+    const error: any = new Error("Une erreur s'est produite.")
+    error.status = err.status || 400
+    throw error
   }
 }
 
