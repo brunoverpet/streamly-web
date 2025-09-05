@@ -22,7 +22,7 @@ export default function ItemCard({
     <div>
       <div className="w-40 h-80 rounded-xl flex items-end relative">
         <Link href={`/media/${id}`}>
-          <Image src={image} layout="fill" className="rounded-xl object-cover" priority />
+          <Image src={image} layout="fill" className="object-cover rounded-xl" priority />
           <div
             className="absolute right-3 top-3 rounded-full w-max p-1 bg-tertiary"
             onClick={(e) => e.preventDefault()}
@@ -37,7 +37,7 @@ export default function ItemCard({
                 <p className="text-paragraph font-extralight text-sm truncate">{release_date}</p>
               </div>
 
-              <div className="mx-3 flex gap-2 overflow-auto">
+              <div className="mx-3 flex gap-2 overflow-auto md:overflow-hidden">
                 {genres.map((genre: any) => (
                   <Tag key={genre.id} name={genre.name} />
                 ))}
