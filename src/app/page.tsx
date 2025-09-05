@@ -13,7 +13,7 @@ export default function Home() {
   const router = useRouter()
 
   const handleDragEnd = (_event: any, info: any) => {
-    if (info.offset.x > 10) {
+    if (info.offset.x > 50) {
       router.push('/historique')
     }
   }
