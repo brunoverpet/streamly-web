@@ -15,8 +15,12 @@ export default function ItemCard({
   withInfo = false,
   isSeen = false,
 }: ItemCardProps) {
-  const backdropUrl = `https://image.tmdb.org/t/p/original${backdrop_path}`
-  const image = backdropUrl || '/clean-web-fallback.jpg'
+  let image = ''
+  if (backdrop_path) {
+    image = `https://image.tmdb.org/t/p/original${backdrop_path}`
+  } else {
+    image = '/clean-web-fallback.jpg'
+  }
 
   return (
     <div>
