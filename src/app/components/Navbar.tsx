@@ -1,5 +1,3 @@
-'use client'
-
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import { MoveLeft, Search } from 'lucide-react'
