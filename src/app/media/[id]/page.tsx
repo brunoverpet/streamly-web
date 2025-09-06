@@ -8,6 +8,9 @@ import { SingleItemInfo } from '@/app/type/ItemCard'
 import { getItem } from '../../../../lib/api'
 import Tag from '@/app/components/tag'
 
+// Type local pour cette page uniquement
+type GenreLocal = { id: number; name: string }
+
 export default function Media({ params }: { params: Promise<{ id: string }> }) {
   const [item, setItem] = useState<SingleItemInfo | null>(null)
   const [loading, setLoading] = useState(true)
@@ -22,25 +25,69 @@ export default function Media({ params }: { params: Promise<{ id: string }> }) {
     getItem(id)
       .then((foundItem) => {
         if (!foundItem) throw new Error(`Item with id ${id} not found`)
+
+        // On isole les genres pour l'affichage des Tag
+        const genresForTags: GenreLocal[] = foundItem.genres || []
+        const genresForCard: string[] = genresForTags.map((g) => g.name)
+
         setItem({
           item: {
             id: foundItem.id,
             backdrop_path: foundItem.backdrop_path,
             title: foundItem.title,
             release_date: foundItem.release_date,
-            genres: foundItem.genres || [],
+            genres: genresForCard, // ItemCard attend string[]
           },
           runtime: foundItem.runtime,
           synopsis: foundItem.overview,
           actors: (foundItem.credits.cast || []).slice(0, 3),
           isSeen: foundItem.isSeen,
         })
+
+        // On garde les genres pour les Tag dans un champ temporaire
+        setGenresForTags(genresForTags)
       })
       .catch((err: any) => setError(err.message || 'Une erreur est survenue'))
       .finally(() => setLoading(false))
   }, [id])
 
-  if (loading) return <div className="text-center mt-16">Chargement...</div>
+  // Nouveau state pour les Tag
+  const [genresForTags, setGenresForTags] = useState<GenreLocal[]>([])
+
+  if (loading)
+    return (
+      <div className="mt-16 flex flex-col items-center gap-6 animate-pulse">
+        {/* Skeleton pour le bouton retour */}
+        <div className="w-12 h-12 bg-gray-300 rounded-full" />
+
+        {/* Skeleton pour l'image principale */}
+        <div className="w-full max-w-lg h-96 bg-gray-300 rounded-lg" />
+
+        {/* Skeleton pour le titre */}
+        <div className="w-3/4 h-6 bg-gray-300 rounded-md mt-4" />
+
+        {/* Skeleton pour la date et durée */}
+        <div className="w-1/2 h-4 bg-gray-300 rounded-md mt-2" />
+
+        {/* Skeleton pour le synopsis */}
+        <div className="w-full h-20 bg-gray-300 rounded-md mt-4" />
+
+        {/* Skeleton pour les genres */}
+        <div className="flex gap-2 mt-4">
+          <div className="w-16 h-6 bg-gray-300 rounded-sm" />
+          <div className="w-20 h-6 bg-gray-300 rounded-sm" />
+          <div className="w-12 h-6 bg-gray-300 rounded-sm" />
+        </div>
+
+        {/* Skeleton pour les acteurs */}
+        <div className="flex gap-4 mt-6">
+          <div className="w-20 h-28 bg-gray-300 rounded-md" />
+          <div className="w-20 h-28 bg-gray-300 rounded-md" />
+          <div className="w-20 h-28 bg-gray-300 rounded-md" />
+        </div>
+      </div>
+    )
+
   if (error) return <div className="text-center mt-16 text-red-500">{error}</div>
   if (!item) return null
 
@@ -66,7 +113,7 @@ export default function Media({ params }: { params: Promise<{ id: string }> }) {
           release_date={item.item.release_date}
           title={item.item.title}
           backdrop_path={item.item.backdrop_path}
-          genres={item.item.genres}
+          genres={item.item.genres} // string[]
           withInfo={true}
           isSeen={item.isSeen}
         />
@@ -87,7 +134,7 @@ export default function Media({ params }: { params: Promise<{ id: string }> }) {
         <div className="mt-4">
           <h2 className="font-medium text-title">Genres</h2>
           <div className="flex flex-wrap gap-2">
-            {item.item.genres.map((tag) => (
+            {genresForTags.map((tag) => (
               <Tag key={tag.id} name={tag.name} />
             ))}
           </div>
