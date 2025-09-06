@@ -10,6 +10,21 @@ export async function login(email: string, password: string) {
   }
 }
 
+export async function register(
+  firstname: string,
+  lastname: string,
+  email: string,
+  password: string
+) {
+  try {
+    return await fetchUtilities('/register', 'POST', { email, firstname, lastname, password })
+  } catch (err: any) {
+    const error: any = new Error("Il s'est passé une erreur.")
+    error.status = err.status || 400
+    throw error
+  }
+}
+
 export async function getRecommandations() {
   try {
     return await fetchUtilities('/recommendations', 'get')

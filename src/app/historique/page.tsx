@@ -97,7 +97,8 @@ export default function Historique() {
               animate={{ opacity: 1 }}
               className="text-orange-300 font-medium text-xl text-center"
             >
-              Vous n'avez pas encore ajouté de films vus.
+              Ajoutez vos films vus via la barre de recherche pour commencer à recevoir des
+              recommandations !
             </motion.h1>
           )}
         </div>

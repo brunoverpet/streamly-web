@@ -71,7 +71,7 @@ export default function SearchResults({ value }: { value: string }) {
             backdrop_path={item.poster_path}
             title={item.title}
             release_date={item.release_date}
-            genres={[]} // tu peux mapper les genres plus tard si dispo
+            genres={[]}
             isSeen={item.seen}
           />
         ))

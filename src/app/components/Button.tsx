@@ -5,12 +5,7 @@ interface ButtonProps {
 }
 export default function Button({ name }: ButtonProps) {
   return (
-    <button
-      // onClick={() => {
-      //   toast('This is a toast', { icon: <ArrowDown /> })
-      // }}
-      className="bg-card-tag p-3 rounded-lg text-title flex items-center w-max"
-    >
+    <button className="bg-card-tag p-3 rounded-lg text-title flex items-center w-max cursor-pointer">
       {name}
     </button>
   )

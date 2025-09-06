@@ -89,7 +89,8 @@ export default function Home() {
               animate={{ opacity: 1 }}
               className="text-white opacity-60 text-center"
             >
-              Aucun film recommandé 😢
+              Pour que nous puissions vous recommander des films, commencez par ajouter des films
+              que vous avez déjà vus via votre historique ou la barre de recherche.
             </motion.div>
           )}
         </div>
