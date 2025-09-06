@@ -7,6 +7,7 @@ import { useRouter } from 'next/navigation'
 import { AnimatePresence, motion } from 'motion/react'
 import { ItemCardProps } from '@/app/type/ItemCard'
 import { getRecommandations } from '../../lib/api'
+import { formatDateFR } from '@/app/formatDate'
 
 export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -75,7 +76,7 @@ export default function Home() {
                   <ItemCard
                     id={item.id}
                     title={item.title}
-                    release_date={item.release_date}
+                    release_date={formatDateFR(item.release_date)}
                     backdrop_path={item.backdrop_path}
                     genres={item.genres}
                     onRemove={handleRemoveItem}

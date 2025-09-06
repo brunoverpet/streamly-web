@@ -7,6 +7,7 @@ import ActorCard from '@/app/components/ActorCard'
 import { SingleItemInfo } from '@/app/type/ItemCard'
 import { getItem } from '../../../../lib/api'
 import Tag from '@/app/components/tag'
+import { formatDateFR } from '@/app/formatDate'
 
 // Type local pour cette page uniquement
 type GenreLocal = { id: number; name: string }
@@ -53,16 +54,6 @@ export default function Media({ params }: { params: Promise<{ id: string }> }) {
 
   // Nouveau state pour les Tag
   const [genresForTags, setGenresForTags] = useState<GenreLocal[]>([])
-
-  function formatDateFR(dateString: string | undefined) {
-    if (!dateString) return ''
-    const date = new Date(dateString)
-    return new Intl.DateTimeFormat('fr-FR', {
-      day: '2-digit',
-      month: '2-digit',
-      year: 'numeric',
-    }).format(date)
-  }
 
   if (loading)
     return (

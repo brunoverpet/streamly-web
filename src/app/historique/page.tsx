@@ -8,6 +8,7 @@ import { AnimatePresence, motion } from 'motion/react'
 import { getHistoric } from '../../../lib/api'
 import { ItemCardPropsFromApi } from '@/app/type/ItemCard'
 import SearchResults from '@/app/components/SearchResults'
+import { formatDateFR } from '@/app/formatDate'
 
 export default function Historique() {
   const [items, setItems] = useState<any[]>([])
@@ -82,7 +83,7 @@ export default function Historique() {
                   <ItemCard
                     id={item.idTmdb}
                     title={item.title}
-                    release_date={item.releaseDate}
+                    release_date={formatDateFR(item.releaseDate)}
                     backdrop_path={item.backdropPath}
                     genres={item.genres}
                     isSeen={true}
