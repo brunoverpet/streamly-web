@@ -14,10 +14,10 @@ interface NavbarProps {
     name: string
     url: string
   }
-  searchActive: boolean
-  searchValue: string
-  onToggleSearch: (active: boolean) => void
-  onSearchChange: (value: string) => void
+  searchActive?: boolean
+  searchValue?: string
+  onToggleSearch?: (active: boolean) => void
+  onSearchChange?: (value: string) => void
 }
 
 export default function Navbar({
@@ -37,7 +37,7 @@ export default function Navbar({
       >
         {!searchActive && pathname === '/historique' && (
           <div className="">
-            <Search className="text-title" size={30} onClick={() => onToggleSearch(true)} />
+            <Search className="text-title" size={30} onClick={() => onToggleSearch?.(true)} />
           </div>
         )}
         {searchActive && pathname === '/historique' && (
@@ -46,7 +46,7 @@ export default function Navbar({
               <MoveLeft
                 color="var(--color-card-tag)"
                 className="w-12 h-12 xl:cursor-pointer"
-                onClick={() => onToggleSearch(false)}
+                onClick={() => onToggleSearch?.(false)}
               />
             </div>
             <Input
@@ -55,7 +55,7 @@ export default function Navbar({
               placeholder="Rechercher"
               type="text"
               withSearchIcon={true}
-              onChange={(e) => onSearchChange(e.target.value)}
+              onChange={(e) => onSearchChange?.(e.target.value)}
             />
           </>
         )}
