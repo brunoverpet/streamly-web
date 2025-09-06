@@ -3,6 +3,7 @@ const url = 'https://streamly-api.codehive.fr'
 
 export async function login(email: string, password: string) {
   try {
+    console.log(email, password)
     return await fetchUtilities('/login', 'POST', { email, password })
   } catch (err: any) {
     const error: any = new Error("L'email ou le mot de passe est incorrect.")
