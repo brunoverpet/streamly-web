@@ -44,7 +44,10 @@ export default function Navbar({
               <MoveLeft
                 color="var(--color-card-tag)"
                 className="w-12 h-12 xl:cursor-pointer"
-                onClick={() => onToggleSearch?.(false)}
+                onClick={() => {
+                  onSearchChange?.('')
+                  onToggleSearch?.(false)
+                }}
               />
             </div>
             <Input

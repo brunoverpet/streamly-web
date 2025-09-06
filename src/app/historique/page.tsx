@@ -7,12 +7,14 @@ import { useRouter } from 'next/navigation'
 import { AnimatePresence, motion } from 'motion/react'
 import { getHistoric } from '../../../lib/api'
 import { ItemCardPropsFromApi } from '@/app/type/ItemCard'
+import SearchResults from '@/app/components/SearchResults'
 
 export default function Historique() {
   const [items, setItems] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
   const [searchActive, setSearchActive] = useState(false)
   const [searchValue, setSearchValue] = useState('')
+  const searchValueIsActive = searchValue.trim() !== ''
 
   const containerRef = useRef<HTMLDivElement>(null)
   const router = useRouter()
@@ -28,12 +30,11 @@ export default function Historique() {
       .then((res) => setItems(res))
       .catch((err) => console.error(err))
       .finally(() => setLoading(false))
-  }, [])
+  }, [searchValue])
 
   function handleRemoveItem(itemId: string) {
-    setItems(items.filter((item) => item.id !== itemId))
+    setItems(items.filter((item) => item.idTmdb !== itemId))
   }
-
 
   return (
     <div ref={containerRef} className="mt-14">
@@ -54,8 +55,10 @@ export default function Historique() {
         </div>
 
         <div className="mt-14 flex flex-wrap gap-2 justify-center">
-          {loading ? (
-            // 🟢 Skeleton loader identique à la Home
+          {searchValueIsActive ? (
+            <SearchResults value={searchValue} />
+          ) : loading ? (
+            // Skeleton loader
             [...Array(6)].map((_, i) => (
               <motion.div
                 key={i}
@@ -70,18 +73,14 @@ export default function Historique() {
               {items.map((item: ItemCardPropsFromApi) => (
                 <motion.div
                   layout
-                  key={item.id} // c'est suffisant
+                  key={item.id}
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  exit={{
-                    opacity: 0,
-                    rotateY: 90,
-                    scale: 0.8,
-                  }}
+                  exit={{ opacity: 0, rotateY: 90, scale: 0.8 }}
                   transition={{ duration: 0.6, ease: 'easeInOut' }}
                 >
                   <ItemCard
-                    id={item.id}
+                    id={item.idTmdb}
                     title={item.title}
                     release_date={item.releaseDate}
                     backdrop_path={item.backdropPath}

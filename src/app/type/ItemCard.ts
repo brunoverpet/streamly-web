@@ -12,6 +12,7 @@ export interface ItemCardProps {
 export interface ItemCardPropsFromApi {
   withInfo?: boolean
   id: string
+  idTmdb: string
   backdropPath: string
   title: string
   releaseDate: string
