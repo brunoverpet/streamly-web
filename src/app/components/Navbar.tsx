@@ -15,13 +15,17 @@ interface NavbarProps {
     url: string
   }
   searchActive: boolean
+  searchValue: string
   onToggleSearch: (active: boolean) => void
+  onSearchChange: (value: string) => void
 }
 
 export default function Navbar({
   page1Info = { name: 'Historique', url: 'historique' },
   page2Info = { name: 'Explorer', url: '/' },
   searchActive,
+  searchValue,
+  onSearchChange,
   onToggleSearch,
 }: NavbarProps) {
   const pathname = usePathname()
@@ -45,7 +49,14 @@ export default function Navbar({
                 onClick={() => onToggleSearch(false)}
               />
             </div>
-            <Input name="search" placeholder="Rechercher" type="text" withSearchIcon={true} />
+            <Input
+              value={searchValue}
+              name="search"
+              placeholder="Rechercher"
+              type="text"
+              withSearchIcon={true}
+              onChange={(e) => onSearchChange(e.target.value)}
+            />
           </>
         )}
       </div>

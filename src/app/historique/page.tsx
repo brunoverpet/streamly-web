@@ -12,6 +12,7 @@ export default function Historique() {
   const [items, setItems] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
   const [searchActive, setSearchActive] = useState(false)
+  const [searchValue, setSearchValue] = useState('')
 
   const containerRef = useRef<HTMLDivElement>(null)
   const router = useRouter()
@@ -33,6 +34,7 @@ export default function Historique() {
     setItems(items.filter((item) => item.id !== itemId))
   }
 
+
   return (
     <div ref={containerRef} className="mt-14">
       <motion.div
@@ -43,7 +45,12 @@ export default function Historique() {
         dragDirectionLock={true}
       >
         <div className="mt-16 flex items-center justify-center">
-          <Navbar searchActive={searchActive} onToggleSearch={setSearchActive} />
+          <Navbar
+            searchActive={searchActive}
+            onToggleSearch={setSearchActive}
+            searchValue={searchValue}
+            onSearchChange={setSearchValue}
+          />
         </div>
 
         <div className="mt-14 flex flex-wrap gap-2 justify-center">
