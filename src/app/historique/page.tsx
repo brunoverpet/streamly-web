@@ -11,6 +11,7 @@ import { ItemCardPropsFromApi } from '@/app/type/ItemCard'
 export default function Historique() {
   const [items, setItems] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
+  const [searchActive, setSearchActive] = useState(false)
 
   const containerRef = useRef<HTMLDivElement>(null)
   const router = useRouter()
@@ -42,7 +43,7 @@ export default function Historique() {
         dragDirectionLock={true}
       >
         <div className="mt-16 flex items-center justify-center">
-          <Navbar />
+          <Navbar searchActive={searchActive} onToggleSearch={setSearchActive} />
         </div>
 
         <div className="mt-14 flex flex-wrap gap-2 justify-center">

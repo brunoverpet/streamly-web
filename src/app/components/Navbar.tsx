@@ -3,7 +3,6 @@
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import { MoveLeft, Search } from 'lucide-react'
-import { useState } from 'react'
 import Input from '@/app/components/Input'
 
 interface NavbarProps {
@@ -15,14 +14,17 @@ interface NavbarProps {
     name: string
     url: string
   }
+  searchActive: boolean
+  onToggleSearch: (active: boolean) => void
 }
 
 export default function Navbar({
   page1Info = { name: 'Historique', url: 'historique' },
   page2Info = { name: 'Explorer', url: '/' },
+  searchActive,
+  onToggleSearch,
 }: NavbarProps) {
   const pathname = usePathname()
-  const [searchActive, setSearchActive] = useState(false)
 
   return (
     <div className="flex w-full">
@@ -31,7 +33,7 @@ export default function Navbar({
       >
         {!searchActive && pathname === '/historique' && (
           <div className="">
-            <Search className="text-title" size={30} onClick={() => setSearchActive(true)} />
+            <Search className="text-title" size={30} onClick={() => onToggleSearch(true)} />
           </div>
         )}
         {searchActive && pathname === '/historique' && (
@@ -40,15 +42,13 @@ export default function Navbar({
               <MoveLeft
                 color="var(--color-card-tag)"
                 className="w-12 h-12 xl:cursor-pointer"
-                onClick={() => setSearchActive(false)}
+                onClick={() => onToggleSearch(false)}
               />
             </div>
             <Input name="search" placeholder="Rechercher" type="text" withSearchIcon={true} />
           </>
         )}
       </div>
-
-      {/*{!searchActive && pathname === '/historique' && <div className="invisible w-1"></div>}*/}
 
       {!searchActive && (
         <div className="flex gap-4 justify-center flex-1">
@@ -77,7 +77,6 @@ export default function Navbar({
           </Link>
         </div>
       )}
-      {/*<div className="w-[24px]" />*/}
     </div>
   )
 }
