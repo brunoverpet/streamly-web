@@ -6,6 +6,7 @@ export interface ItemCardProps {
   release_date: string
   genres: string[]
   isSeen?: boolean
+  onRemove?: (itemId: string) => void
 }
 
 export interface ItemCardPropsFromApi {

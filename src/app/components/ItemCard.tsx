@@ -14,6 +14,7 @@ export default function ItemCard({
   genres = [],
   withInfo = false,
   isSeen = false,
+  onRemove,
 }: ItemCardProps) {
   let image = ''
   if (backdrop_path) {
@@ -31,7 +32,13 @@ export default function ItemCard({
             className="absolute right-3 top-3 rounded-full w-max p-1 bg-tertiary"
             onClick={(e) => e.preventDefault()}
           >
-            <SeenButton itemId={id} initialSeen={isSeen} />
+            <SeenButton
+              itemId={id}
+              initialSeen={isSeen}
+              onToggle={(itemId) => {
+                if (onRemove) onRemove(itemId)
+              }}
+            />
           </div>
 
           {!withInfo && (

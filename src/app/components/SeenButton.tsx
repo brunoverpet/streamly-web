@@ -8,9 +8,10 @@ import { addWatchedItem, removeWatchedItem } from '../../../lib/api'
 interface SeenButtonProps {
   itemId: string
   initialSeen?: boolean
+  onToggle?: (itemId: string) => void
 }
 
-export default function SeenButton({ itemId, initialSeen = false }: SeenButtonProps) {
+export default function SeenButton({ itemId, initialSeen = false, onToggle }: SeenButtonProps) {
   const [seen, setSeen] = useState(initialSeen)
   const [loading, setLoading] = useState(false)
 
@@ -19,12 +20,31 @@ export default function SeenButton({ itemId, initialSeen = false }: SeenButtonPr
     try {
       if (seen) {
         await removeWatchedItem(itemId)
-        toast.success('Film retiré des vus')
+        toast('Film retiré', {
+          description: 'Il a été supprimé de votre historique.',
+          duration: 3000,
+          style: {
+            backgroundColor: '#fbbf24',
+            color: '#1f2937',
+            fontWeight: 500,
+            padding: '12px 16px',
+          },
+        })
       } else {
         await addWatchedItem(itemId)
-        toast.success('Film ajouté aux vus')
+        toast('Film ajouté', {
+          description: 'Ce film a été ajouté à votre historique.',
+          duration: 3000,
+          style: {
+            backgroundColor: '#60d9ab',
+            color: '#1f2937',
+            fontWeight: 500,
+            padding: '12px 16px',
+          },
+        })
       }
       setSeen(!seen)
+      if (onToggle) onToggle(itemId)
     } catch (err) {
       console.error(err)
       toast.error("Erreur lors de l'action")

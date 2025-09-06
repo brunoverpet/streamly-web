@@ -4,7 +4,7 @@ import ItemCard from '@/app/components/ItemCard'
 import Navbar from '@/app/components/Navbar'
 import { useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { motion } from 'motion/react'
+import { AnimatePresence, motion } from 'motion/react'
 import { ItemCardProps } from '@/app/type/ItemCard'
 import { getRecommandations } from '../../lib/api'
 
@@ -28,6 +28,10 @@ export default function Home() {
       .catch((err) => console.error(err))
       .finally(() => setLoading(false))
   }, [])
+
+  function handleRemoveItem(itemId: string) {
+    setItems(items.filter((item) => item.id !== itemId))
+  }
 
   return (
     <div ref={containerRef}>
@@ -54,16 +58,31 @@ export default function Home() {
               />
             ))
           ) : items.length > 0 ? (
-            items.map((item) => (
-              <ItemCard
-                key={item.id}
-                id={item.id}
-                title={item.title}
-                release_date={item.release_date}
-                backdrop_path={item.backdrop_path}
-                genres={item.genres}
-              />
-            ))
+            <AnimatePresence>
+              {items.map((item) => (
+                <motion.div
+                  layout
+                  key={item.id} // c'est suffisant
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{
+                    opacity: 0,
+                    rotateY: 90,
+                    scale: 0.8,
+                  }}
+                  transition={{ duration: 0.6, ease: 'easeInOut' }}
+                >
+                  <ItemCard
+                    id={item.id}
+                    title={item.title}
+                    release_date={item.release_date}
+                    backdrop_path={item.backdrop_path}
+                    genres={item.genres}
+                    onRemove={handleRemoveItem}
+                  />
+                </motion.div>
+              ))}
+            </AnimatePresence>
           ) : (
             <motion.div
               initial={{ opacity: 0 }}
