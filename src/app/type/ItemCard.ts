@@ -21,12 +21,13 @@ export interface ItemCardPropsFromApi {
 
 export interface Actor {
   name: string
-  src: string
+  profile_path: string
 }
 
 export interface SingleItemInfo {
   item: ItemCardProps
-  duration: string
+  runtime: string
   synopsis: string
   actors: Actor[]
+  isSeen?: boolean
 }

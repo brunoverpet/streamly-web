@@ -30,10 +30,9 @@ export async function getHistoric() {
   }
 }
 
-//fonction non encore fait côté API TODO
 export async function getItem(id: string) {
   try {
-    return await fetchUtilities(`/item${id}`, 'get')
+    return await fetchUtilities(`/media/${id}`, 'get')
   } catch (err: any) {
     const error: any = new Error("Une erreur s'est produite.")
     error.status = err.status || 400
