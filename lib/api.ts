@@ -1,5 +1,5 @@
-// const url = 'http://localhost:3333'
 const url = 'https://streamly-api.codehive.fr/'
+// const url = 'http://localhost:3333'
 
 export async function login(email: string, password: string) {
   try {
