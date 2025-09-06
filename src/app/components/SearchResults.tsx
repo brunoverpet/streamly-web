@@ -5,8 +5,24 @@ import { searchItem } from '../../../lib/api'
 import ItemCard from '@/app/components/ItemCard'
 import { motion } from 'motion/react'
 
+type SearchResultItem = {
+  id: number
+  poster_path: string
+  title: string
+  release_date: string
+  seen: boolean
+  watched_id: number | null
+}
+
+type SearchResultResponse = {
+  page: number
+  results: SearchResultItem[]
+  total_pages: number
+  total_results: number
+}
+
 export default function SearchResults({ value }: { value: string }) {
-  const [results, setResults] = useState<any[]>([])
+  const [results, setResults] = useState<SearchResultResponse | null>(null)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -14,15 +30,13 @@ export default function SearchResults({ value }: { value: string }) {
 
     setLoading(true)
 
-    //  Debounce avec setTimeout
     const timer = setTimeout(() => {
       searchItem(value)
-        .then((res) => setResults(res))
+        .then((res: SearchResultResponse) => setResults(res))
         .catch((err) => console.error(err))
         .finally(() => setLoading(false))
-    }, 1500) // attends 400ms avant d’appeler l’API
+    }, 1500)
 
-    //  Nettoyage si value change avant la fin du timer
     return () => clearTimeout(timer)
   }, [value])
 
@@ -43,19 +57,21 @@ export default function SearchResults({ value }: { value: string }) {
     )
   }
 
+  if (!results) return null
+
   return (
     <div className="mt-14 flex flex-wrap gap-2 justify-center">
       {results.results.length === 0 ? (
         <div>Aucun résultat</div>
       ) : (
-        results.results.map((item: any) => (
+        results.results.map((item) => (
           <ItemCard
             key={item.id}
-            id={item.id}
+            id={item.id.toString()}
             backdrop_path={item.poster_path}
             title={item.title}
             release_date={item.release_date}
-            genres={[]}
+            genres={[]} // tu peux mapper les genres plus tard si dispo
             isSeen={item.seen}
           />
         ))
