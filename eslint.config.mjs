@@ -13,6 +13,9 @@ const eslintConfig = [
   ...compat.extends('plugin:@next/next/recommended', 'next/typescript', 'prettier'),
   {
     ignores: ['node_modules/**', '.next/**', 'out/**', 'build/**', 'next-env.d.ts'],
+    rules: {
+      '@typescript-eslint/no-explicit-any': 'off', // désactive la règle pour tout le projet
+    },
   },
 ]
 

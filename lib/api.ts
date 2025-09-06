@@ -85,7 +85,11 @@ export async function searchItem(value: string) {
   }
 }
 
-export async function fetchUtilities(endpoint: string, method: string, body?: {}) {
+export async function fetchUtilities(
+  endpoint: string,
+  method: string,
+  body?: Record<string, unknown>
+) {
   const res = await fetch(url + endpoint, {
     method: method,
     credentials: 'include',

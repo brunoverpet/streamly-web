@@ -9,7 +9,7 @@ import { useState } from 'react'
 import { toast } from 'sonner'
 import { useRouter } from 'next/navigation'
 
-export default function Page({ params }: { params: { email: string; password: string } }) {
+export default function Page({}: { params: { email: string; password: string } }) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const router = useRouter()
@@ -18,7 +18,7 @@ export default function Page({ params }: { params: { email: string; password: st
     e.preventDefault()
 
     try {
-      const data = await login(email, password)
+      await login(email, password)
       router.push('/')
     } catch (error: any) {
       if (error.status === 400) {
