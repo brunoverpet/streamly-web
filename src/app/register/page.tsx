@@ -33,15 +33,8 @@ export default function Page() {
   }
 
   return (
-    <div>
-      <div className="mt-16">
-        <h1 className="text-title font-semibold text-2xl mb-2">Créer un compte</h1>
-        <span className="text-paragraph font-light text-sm">
-          Complétez vos informations pour rejoindre la plateforme
-        </span>
-      </div>
-
-      <div className="mt-10">
+    <div className="mt-10 flex justify-center">
+      <div className="w-full max-w-md lg:max-w-lg">
         <Navbar
           page1Info={{ name: "S'inscrire", url: '/register' }}
           page2Info={{ name: 'Se connecter', url: '/login' }}
@@ -85,5 +78,6 @@ export default function Page() {
         </form>
       </div>
     </div>
+
   )
 }

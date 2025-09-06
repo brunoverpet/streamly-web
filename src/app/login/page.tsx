@@ -28,14 +28,8 @@ export default function Page({}: { params: { email: string; password: string } }
   }
 
   return (
-    <div>
-      <div className="mt-16">
-        <h1 className="text-title font-semibold text-2xl mb-2">Connectez vous à votre compte</h1>
-        <span className="text-paragraph font-light text-sm">
-          Heureux de vous revoir, saisissez vos identifiants
-        </span>
-      </div>
-      <div className="mt-10">
+    <div className="mt-16 flex justify-center">
+      <div className="w-full max-w-md lg:max-w-lg">
         <Navbar
           page1Info={{ name: "S'inscrire", url: '/register' }}
           page2Info={{ name: 'Se connecter', url: '/login' }}
@@ -58,7 +52,7 @@ export default function Page({}: { params: { email: string; password: string } }
             />
           </div>
           <div className="flex justify-center">
-            <Button name="Se connnecter" />
+            <Button name="Se connecter" />
           </div>
         </form>
       </div>
