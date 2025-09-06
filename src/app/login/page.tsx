@@ -19,7 +19,6 @@ export default function Page({ params }: { params: { email: string; password: st
 
     try {
       const data = await login(email, password)
-      console.log('✅ Connecté avec succès', data)
       router.push('/')
     } catch (error: any) {
       if (error.status === 400) {
