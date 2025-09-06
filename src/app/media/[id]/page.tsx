@@ -54,6 +54,16 @@ export default function Media({ params }: { params: Promise<{ id: string }> }) {
   // Nouveau state pour les Tag
   const [genresForTags, setGenresForTags] = useState<GenreLocal[]>([])
 
+  function formatDateFR(dateString: string | undefined) {
+    if (!dateString) return ''
+    const date = new Date(dateString)
+    return new Intl.DateTimeFormat('fr-FR', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric',
+    }).format(date)
+  }
+
   if (loading)
     return (
       <div className="mt-16 flex flex-col items-center gap-6 animate-pulse">
@@ -122,7 +132,7 @@ export default function Media({ params }: { params: Promise<{ id: string }> }) {
       <div>
         <h1 className="text-title font-bold text-xl mt-8">{item.item.title}</h1>
         <div className="flex items-center justify-between text-paragraph font-extralight">
-          <span>{item.item.release_date}</span>
+          <span>{formatDateFR(item.item.release_date)}</span>
           <span>{formatRuntime(Number(item.runtime))}</span>
         </div>
 
