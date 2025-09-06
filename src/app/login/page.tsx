@@ -19,6 +19,7 @@ export default function Page({}: { params: { email: string; password: string } }
 
     try {
       await login(email, password)
+      toast.success('Login successfully.')
       router.push('/')
     } catch (error: any) {
       if (error.status === 400) {
