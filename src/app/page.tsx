@@ -8,6 +8,7 @@ import { AnimatePresence, motion } from 'motion/react'
 import { ItemCardProps } from '@/app/type/ItemCard'
 import { getRecommandations } from '../../lib/api'
 import { formatDateFR } from '@/app/formatDate'
+import Logout from '@/app/Logout'
 
 export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -36,6 +37,7 @@ export default function Home() {
 
   return (
     <div ref={containerRef}>
+      <Logout />
       <motion.div
         drag="x"
         dragConstraints={containerRef}

@@ -9,6 +9,7 @@ import { getHistoric } from '../../../lib/api'
 import { ItemCardPropsFromApi } from '@/app/type/ItemCard'
 import SearchResults from '@/app/components/SearchResults'
 import { formatDateFR } from '@/app/formatDate'
+import Logout from '@/app/Logout'
 
 export default function Historique() {
   const [items, setItems] = useState<any[]>([])
@@ -39,6 +40,7 @@ export default function Historique() {
 
   return (
     <div ref={containerRef} className="mt-14">
+      <Logout />
       <motion.div
         drag="x"
         dragConstraints={containerRef}

@@ -29,7 +29,7 @@ export default function Navbar({
   const pathname = usePathname()
 
   return (
-    <div className="flex w-full">
+    <div className="flex w-full xl:w-3/4">
       <div
         className={`flex ${searchActive ? 'gap-x-5 justify-between items-center w-full' : 'justify-center'}`}
       >
