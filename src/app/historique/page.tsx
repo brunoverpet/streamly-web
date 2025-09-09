@@ -55,7 +55,7 @@ export default function Historique() {
           />
         </div>
 
-        <div className="mt-14 flex flex-wrap gap-2 justify-center">
+        <div className="mt-14 flex flex-wrap gap-2 justify-center xl:w-3/4 xl:gap-6 xl:mx-auto">
           {searchValueIsActive ? (
             <SearchResults value={searchValue} />
           ) : loading ? (

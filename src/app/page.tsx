@@ -46,7 +46,7 @@ export default function Home() {
           <Navbar />
         </div>
 
-        <div className="mt-14 flex gap-2 flex-wrap justify-center">
+        <div className="mt-14 flex gap-2 flex-wrap justify-center xl:w-3/4 xl:gap-6 xl:mx-auto">
           {loading ? (
             // 🟢 Skeleton Loader
             [...Array(6)].map((_, i) => (
